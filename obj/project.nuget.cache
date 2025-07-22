@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZpInSFxy0Mk=",
+  "dgSpecHash": "8+Nv58AyRns=",
   "success": true,
   "projectFilePath": "D:\\hh\\AgroFieldApi\\AgroFieldApi\\AgroFieldApi.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,21 @@
     "C:\\Users\\Дмитрий\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.2\\swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "C:\\Users\\Дмитрий\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.2\\swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "C:\\Users\\Дмитрий\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.2\\swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
-    "C:\\Users\\Дмитрий\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
+    "C:\\Users\\Дмитрий\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.6.2\\swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
+    "C:\\Users\\Дмитрий\\.nuget\\packages\\system.device.location.portable\\1.0.0\\system.device.location.portable.1.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Пакет \"System.Device.Location.Portable 1.0.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net8.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "projectPath": "D:\\hh\\AgroFieldApi\\AgroFieldApi\\AgroFieldApi.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\hh\\AgroFieldApi\\AgroFieldApi\\AgroFieldApi.csproj",
+      "libraryId": "System.Device.Location.Portable",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
