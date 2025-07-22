@@ -38,8 +38,8 @@ namespace AgroFieldApi.Models
             {
                 return _locations ??= new
                 {
-                    Center = new[] {Center.Lat, Center.Lng},
-                    Polygon = Polygon.Select(o=> new[] {o.Lat, o.Lng})
+                    Center = Center == null ? null : new[] { Center.Lat, Center.Lng },
+                    Polygon = Polygon?.Select(p => new[] { p.Lat, p.Lng }).ToList()
                 };
             }
         }

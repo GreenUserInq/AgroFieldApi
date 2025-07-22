@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using AgroFieldApi.Models;
+using AgroFieldApi.Settings;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using AgroFieldApi.Models;
 
 namespace AgroFieldApi.Services
 {
@@ -9,13 +11,16 @@ namespace AgroFieldApi.Services
     {
         private readonly List<FieldModel> _fields;
 
-        public FieldService(string fieldsPath, string centroidsPath)
+        public FieldService(IOptions<KmlPathSettings> options)
         {
+            var fieldsPath = Path.Combine(Directory.GetCurrentDirectory(), options.Value.Fields);
+            var centroidsPath = Path.Combine(Directory.GetCurrentDirectory(), options.Value.Centroids);
+
             var centroidParser = new KmlCentroidParser();
             var fieldParser = new KmlFieldParser();
 
-            var centroids = centroidParser.Parse(centroidsPath); 
-            var fields = fieldParser.Parse(fieldsPath); 
+            var centroids = centroidParser.Parse(centroidsPath);
+            var fields = fieldParser.Parse(fieldsPath);
 
             _fields = fields.Select(f =>
             {
@@ -34,10 +39,14 @@ namespace AgroFieldApi.Services
         public double? GetFieldSize(string id) =>
             _fields.FirstOrDefault(f => f.Id == id)?.Size;
 
-        public double? GetDistanceToPoint(string id, GeoPoint point)
+        public double GetDistanceToPoint(string id, GeoPoint point)
         {
-            var field = GetFieldById(id);
-            return field == null ? null : GeoUtils.GetDistanceMeters(field.Center, point);
+            var field = _fields.FirstOrDefault(f => f.Id == id);
+
+            if (field == null || field.Center == null)
+                throw new InvalidOperationException("Field not found or center not calculated.");
+
+            return GeoUtils.GetDistanceMeters(field.Center, point);
         }
 
         public (bool found, string id, string name) FindFieldContainingPoint(GeoPoint point)

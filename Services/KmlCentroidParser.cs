@@ -3,8 +3,18 @@ using AgroFieldApi.Models;
 
 namespace AgroFieldApi.Services
 {
+    /// <summary>
+    /// Парсер KML-файлов для извлечения координат центроидов полей.
+    /// </summary>
     public class KmlCentroidParser
     {
+        /// <summary>
+        /// Загружает и разбирает KML-файл, возвращая словарь центроидов полей.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns>
+        /// Словарь, где ключ — это <c>id</c> поля из KML, а значение — координаты центроида в виде <see cref="GeoPoint"/>.
+        /// </returns>
         public Dictionary<string, GeoPoint> Parse(string filePath)
         {
             var centroids = new Dictionary<string, GeoPoint>();
